@@ -6,10 +6,10 @@ function getComputerChoice () {
     // multiply by three for the three different choices
     // you can also do 0-2 but my brain likes 1-3
     let choice = Math.random() * 3;
-    console.log("Unrounded value: " + choice);
+    //console.log("Unrounded value: " + choice);
     // use celiing so that the number cannot be 0
     choice = Math.ceil(choice);
-    console.log("Rounded value: " + choice);
+    //console.log("Rounded value: " + choice);
 
     // use switch case instead of if then due to nature of function (easier to read)
     switch (choice) {
@@ -49,17 +49,17 @@ while (getHumanChoice() === 0)
 */
 
 function playRound(humanChoice, computerChoice){
-    //rock beats scissors 1
-    //scissors beats paper 2
-    //paper beats rock 3
+    // rock beats scissors 1
+    // scissors beats paper 2
+    // paper beats rock 3
     let winner = '';
 
-    //human win conditions
+    // human win conditions
     humanWinCondition1 = humanChoice === "rock" && computerChoice === "scissors" ? winner = "h1" : false;
     humanWinCondition2 = humanChoice === "scissors" && computerChoice === "paper" ? winner = "h2" : false;
     humanWinCondition3 = humanChoice === "paper" && computerChoice === "rock" ? winner = "h3" : false;
 
-    //computer win conditions
+    // computer win conditions
     computerWinCondition1 = computerChoice === "rock" && humanChoice === "scissors" ? winner = "c1" : false;
     computerWinCondition2 = computerChoice === "scissors" && humanChoice === "paper" ? winner = "c2" : false;
     computerWinCondition3 = computerChoice === "paper" && humanChoice === "rock" ? winner = "c3" : false;
@@ -108,11 +108,11 @@ function playRound(humanChoice, computerChoice){
 }
 
 function playGame(){
-    for(let i = 0; i >= 5; i++){
+    for(let i = 0; i < 5; i++){
         playRound(getHumanChoice(),getComputerChoice());
     }
     console.log(`Thanks for playing! Final scores\nYou: ${humanScore}\nComputer: ${computerScore}`)
 }
 
 
-
+playGame()
