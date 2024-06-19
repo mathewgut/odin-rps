@@ -48,11 +48,54 @@ while (getHumanChoice() === 0)
     getHumanChoice()
 */
 
-function playround(humanChoice, computerChoice){
+function playRound(humanChoice, computerChoice){
     //rock beats scissors 1
     //scissors beats paper 2
     //paper beats rock 3
+    let winner = '';
 
+    //human win conditions
+    humanWinCondition1 = humanChoice === "rock" && computerChoice === "scissors" ? winner = "h1" : false;
+    humanWinCondition2 = humanChoice === "scissors" && computerChoice === "paper" ? winner = "h2" : false;
+    humanWinCondition3 = humanChoice === "paper" && computerChoice === "rock" ? winner = "h3" : false;
+
+    //computer win conditions
+    computerWinCondition1 = computerChoice === "rock" && humanChoice === "scissors" ? winner = "c1" : false;
+    computerWinCondition2 = computerChoice === "scissors" && humanChoice === "paper" ? winner = "c2" : false;
+    computerWinCondition3 = computerChoice === "paper" && humanChoice === "rock" ? winner = "c3" : false;
+
+    // tie condition
+    tieCondition = humanChoice === computerChoice ? winner = tie : false;
     
+    // parse winner variable with all options, see which is true
+    switch(winner){
+        case "h1":
+            console.log("You win! Rock beats scissors!")
+            humanScore ++
+            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+        case "h2":
+            console.log("You win! Scissors beats paper!")
+            humanScore ++
+            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+        case "h3":
+            console.log("You win! Paper beats rock!")
+            humanScore ++
+            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+        case "c1":
+            console.log("You lose :( Rock beats scissors.")
+            computerScore ++
+            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+        case "c2":
+            console.log("You lose :( Scissors beats paper.")
+            computerScore ++
+            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+        case "c3":
+            console.log("You lose :( Paper beats rock.")
+            computerScore ++
+            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+        case "tie":
+            console.log("Tie! Great minds think a like!")
+    }
+
 
 }
