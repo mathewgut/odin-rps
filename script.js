@@ -107,7 +107,12 @@ function playRound(humanChoice, computerChoice){
 
 }
 
-human = getHumanChoice();
-computer = getComputerChoice();
+function playGame(){
+    for(let i = 0; i >= 5; i++){
+        playRound(getHumanChoice(),getComputerChoice());
+    }
+    console.log(`Thanks for playing! Final scores\nYou: ${humanScore}\nComputer: ${computerScore}`)
+}
 
-playRound(human,computer);
+
+
