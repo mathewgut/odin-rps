@@ -21,7 +21,7 @@ function getComputerChoice () {
             return "paper";
     }
 }
-console.log(getComputerChoice());
+
 
 function getHumanChoice () {
 // Initialize prompt and convert to lowercase for easier comparing 
@@ -65,7 +65,7 @@ function playRound(humanChoice, computerChoice){
     computerWinCondition3 = computerChoice === "paper" && humanChoice === "rock" ? winner = "c3" : false;
 
     // tie condition
-    tieCondition = humanChoice === computerChoice ? winner = tie : false;
+    tieCondition = humanChoice === computerChoice ? winner = "tie" : false;
     
     // parse winner variable with all options, see which is true
     switch(winner){
@@ -73,29 +73,41 @@ function playRound(humanChoice, computerChoice){
             console.log("You win! Rock beats scissors!")
             humanScore ++
             console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+            break
         case "h2":
             console.log("You win! Scissors beats paper!")
             humanScore ++
             console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+            break
         case "h3":
             console.log("You win! Paper beats rock!")
             humanScore ++
             console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+            break
         case "c1":
             console.log("You lose :( Rock beats scissors.")
             computerScore ++
             console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+            break
         case "c2":
             console.log("You lose :( Scissors beats paper.")
             computerScore ++
             console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+            break
         case "c3":
             console.log("You lose :( Paper beats rock.")
             computerScore ++
             console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
+            break
         case "tie":
             console.log("Tie! Great minds think a like!")
+            break
     }
 
 
 }
+
+human = getHumanChoice();
+computer = getComputerChoice();
+
+playRound(human,computer);
