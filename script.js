@@ -58,6 +58,11 @@ function playRound(humanChoice, computerChoice){
 
     // tie condition
     tieCondition = humanChoice === computerChoice ? winner = "tie" : false;
+
+    // stop condition
+    if(humanScore >= 5 || computerScore >= 5){
+        return
+    }
     
     // parse winner variable with all options, see which is true
     switch(winner){
@@ -87,16 +92,6 @@ function playRound(humanChoice, computerChoice){
 }
 
 
-/*
-function playGame(){
-    for(let i = 0; i < 5; i++){
-        playRound(getHumanChoice(),getComputerChoice());
-    }
-    console.log(`Thanks for playing! Final scores\nYou: ${humanScore}\nComputer: ${computerScore}`)
-}
-
-*/
-
 const choiceContainer = document.createElement('div');
 const resultsContainer = document.createElement('div');
 const rockButton = document.createElement('button');
@@ -120,8 +115,15 @@ choiceContainer.appendChild(scissorsButton);
 document.body.appendChild(choiceContainer);
 
 function displayScore (displayString) {
+    if(humanScore >= 5 || computerScore >= 5){
+        displayString = `Game over! Final scores:\n
+            You: ${humanScore}\n
+            Computer: ${computerScore}\n
+            Thanks for playing!`
+    }
     resultsContainer.textContent = displayString;
     document.body.appendChild(resultsContainer)
+    
 }
 
 choiceContainer.addEventListener('click', (e) => {
