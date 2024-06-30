@@ -85,6 +85,8 @@ function playRound(humanChoice, computerChoice){
 
 
 }
+
+
 /*
 function playGame(){
     for(let i = 0; i < 5; i++){
@@ -102,28 +104,41 @@ const paperButton = document.createElement('button');
 const scissorsButton = document.createElement('button');
 let roundCounter = 0;
 
-choiceContainer = setAttribute('id, choice-container');
-document.body.appendChild(choiceContainer);
-rockButton.setAttribute('id, rock');
-rockButton.setAttribute('id, paper');
-scissorsButton.setAttribute('id, scissors');
+choiceContainer.setAttribute('id', 'choice-container');
 
+
+rockButton.setAttribute('id', 'rock');
+rockButton.textContent = 'Rock';
+paperButton.setAttribute('id', 'paper');
+paperButton.textContent = 'Paper';
+scissorsButton.setAttribute('id', 'scissors');
+scissorsButton.textContent = 'Scissors'
+
+choiceContainer.appendChild(rockButton);
+choiceContainer.appendChild(paperButton);
+choiceContainer.appendChild(scissorsButton);
+document.body.appendChild(choiceContainer);
+
+function displayScore (displayString) {
+    resultsContainer.textContent = displayString;
+    document.body.appendChild(resultsContainer)
+}
 
 choiceContainer.addEventListener('click', (e) => {
     let target = e.target;
+    console.log(target.id);
 
     switch(target.id){
         case 'rock':
-            playRound(target.id,getComputerChoice());
+            displayScore(playRound(target.id,getComputerChoice()));
             break;
         case 'paper':
-            playRound(target.id,getComputerChoice());
+            displayScore(playRound(target.id,getComputerChoice()));
             break;
         case 'scissors':
-            playRound(target.id,getComputerChoice());
+            displayScore(playRound(target.id,getComputerChoice()));
             break;
         default:
-            playRound(target.id,getComputerChoice());
             break;
     }
     
@@ -131,5 +146,3 @@ choiceContainer.addEventListener('click', (e) => {
 
 
 
-
-playGame()
