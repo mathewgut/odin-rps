@@ -6,10 +6,8 @@ function getComputerChoice () {
     // multiply by three for the three different choices
     // you can also do 0-2 but my brain likes 1-3
     let choice = Math.random() * 3;
-    //console.log("Unrounded value: " + choice);
     // use celiing so that the number cannot be 0
     choice = Math.ceil(choice);
-    //console.log("Rounded value: " + choice);
 
     // use switch case instead of if then due to nature of function (easier to read)
     switch (choice) {
@@ -25,8 +23,7 @@ function getComputerChoice () {
 
 function getHumanChoice () {
 // Initialize prompt and convert to lowercase for easier comparing 
-  let userPrompt = prompt("Rock, paper, scissors!");
-  let userChoice = userPrompt.toLowerCase();
+  
 
   // return 0 if not a valid answer
   switch(userChoice){
@@ -41,12 +38,7 @@ function getHumanChoice () {
   }
 }
 
-/*
 
-repeat until we get a valid answer
-while (getHumanChoice() === 0)
-    getHumanChoice()
-*/
 
 function playRound(humanChoice, computerChoice){
     // rock beats scissors 1
@@ -70,49 +62,74 @@ function playRound(humanChoice, computerChoice){
     // parse winner variable with all options, see which is true
     switch(winner){
         case "h1":
-            console.log("You win! Rock beats scissors!")
             humanScore ++
-            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
-            break
+            return("You win! Rock beats scissors!\n " + `Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
         case "h2":
-            console.log("You win! Scissors beats paper!")
             humanScore ++
-            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
-            break
+            return("You win! Scissors beats paper!\n " + `Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
         case "h3":
-            console.log("You win! Paper beats rock!")
             humanScore ++
-            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
-            break
+            return("You win! Paper beats rock! \n" + `Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
         case "c1":
-            console.log("You lose :( Rock beats scissors.")
             computerScore ++
-            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
-            break
+            return("You lose :( Rock beats scissors. \n" + `Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
         case "c2":
-            console.log("You lose :( Scissors beats paper.")
             computerScore ++
-            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
-            break
+            return("You lose :( Scissors beats paper. \n" + `Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
         case "c3":
-            console.log("You lose :( Paper beats rock.")
             computerScore ++
-            console.log(`Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
-            break
+            return("You lose :( Paper beats rock. \n" + `Score\nYou: ${humanScore}\nComputer: ${computerScore}`)
         case "tie":
-            console.log("Tie! Great minds think a like!")
-            break
+            return("Tie! Great minds think a like!")
     }
 
 
 }
-
+/*
 function playGame(){
     for(let i = 0; i < 5; i++){
         playRound(getHumanChoice(),getComputerChoice());
     }
     console.log(`Thanks for playing! Final scores\nYou: ${humanScore}\nComputer: ${computerScore}`)
 }
+
+*/
+
+const choiceContainer = document.createElement('div');
+const resultsContainer = document.createElement('div');
+const rockButton = document.createElement('button');
+const paperButton = document.createElement('button');
+const scissorsButton = document.createElement('button');
+let roundCounter = 0;
+
+choiceContainer = setAttribute('id, choice-container');
+document.body.appendChild(choiceContainer);
+rockButton.setAttribute('id, rock');
+rockButton.setAttribute('id, paper');
+scissorsButton.setAttribute('id, scissors');
+
+
+choiceContainer.addEventListener('click', (e) => {
+    let target = e.target;
+
+    switch(target.id){
+        case 'rock':
+            playRound(target.id,getComputerChoice());
+            break;
+        case 'paper':
+            playRound(target.id,getComputerChoice());
+            break;
+        case 'scissors':
+            playRound(target.id,getComputerChoice());
+            break;
+        default:
+            playRound(target.id,getComputerChoice());
+            break;
+    }
+    
+})
+
+
 
 
 playGame()
